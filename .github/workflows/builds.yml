@@ -1,0 +1,38 @@
+name: Build and Update GNU Radio dependencies on Windows
+
+
+on: ['push']
+
+jobs:
+  build-uhd:
+    runs-on: windows-latest
+    steps:
+    - name: Upload UHD + libaudio
+      uses: ./.github/workflows/build-and-upload.yml
+      with:
+        name: UHD
+        version: 4.6.0
+  build-port-audio:
+    runs-on: windows-latest
+    steps:
+    - name: Upload PortAudio
+      uses: ./github/workflows/build-and-upload.yml
+      with:
+        name: PORTAUDIO
+        version: 19.7.0
+  build-volk:
+    runs-on: windows-latest
+    steps:
+    - name: Upload Volk
+      uses: ./.github/workflows/build-and-upload.yml
+      with:
+        name: VOLK
+        version: 3.1.2
+  # build-gobject:
+  #   runs-on: windows-latest
+  #   steps:
+  #   - name: Upload GObject
+  #     uses: ./.github/workflows/build-and-upload.yml
+  #     with:
+  #       name: GOBJECT
+  #       version: 1.80.0
